@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Rithvik Mani - Personal BIOS",
-  description: "An interactive portfolio simulating a modern BIOS interface.",
+  title: "Rithvik Mani Personal Website",
+  description: "Interactive portfolio",
 };
 
 export default function RootLayout({
