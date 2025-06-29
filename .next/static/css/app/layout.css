@@ -1243,41 +1243,29 @@ html {
   }
 }
 
-
-
 .hover\:scale-110:hover {
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-
-
 .hover\:text-gray-800:hover {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
-
-
 .hover\:underline:hover {
   text-decoration-line: underline;
 }
-
-
 
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
 
-
-
 .active\:cursor-grabbing:active {
   cursor: grabbing;
 }
-
-
 
 @keyframes accordion-up {
 
@@ -1290,13 +1278,9 @@ html {
   }
 }
 
-
-
 .data-\[state\=closed\]\:animate-accordion-up[data-state="closed"] {
   animation: accordion-up 0.2s ease-out;
 }
-
-
 
 @keyframes accordion-down {
 
@@ -1309,13 +1293,9 @@ html {
   }
 }
 
-
-
 .data-\[state\=open\]\:animate-accordion-down[data-state="open"] {
   animation: accordion-down 0.2s ease-out;
 }
-
-
 
 .data-\[state\=open\]\:animate-in[data-state="open"] {
   animation-name: enter;
@@ -1327,8 +1307,6 @@ html {
   --tw-enter-translate-y: initial;
 }
 
-
-
 .data-\[state\=closed\]\:animate-out[data-state="closed"] {
   animation-name: exit;
   animation-duration: 150ms;
@@ -1339,55 +1317,37 @@ html {
   --tw-exit-translate-y: initial;
 }
 
-
-
 .data-\[state\=closed\]\:fade-out-0[data-state="closed"] {
   --tw-exit-opacity: 0;
 }
-
-
 
 .data-\[state\=open\]\:fade-in-0[data-state="open"] {
   --tw-enter-opacity: 0;
 }
 
-
-
 .data-\[state\=closed\]\:zoom-out-95[data-state="closed"] {
   --tw-exit-scale: .95;
 }
-
-
 
 .data-\[state\=open\]\:zoom-in-95[data-state="open"] {
   --tw-enter-scale: .95;
 }
 
-
-
 .data-\[side\=bottom\]\:slide-in-from-top-2[data-side="bottom"] {
   --tw-enter-translate-y: -0.5rem;
 }
-
-
 
 .data-\[side\=left\]\:slide-in-from-right-2[data-side="left"] {
   --tw-enter-translate-x: 0.5rem;
 }
 
-
-
 .data-\[side\=right\]\:slide-in-from-left-2[data-side="right"] {
   --tw-enter-translate-x: -0.5rem;
 }
 
-
-
 .data-\[side\=top\]\:slide-in-from-bottom-2[data-side="top"] {
   --tw-enter-translate-y: 0.5rem;
 }
-
-
 
 @media (min-width: 640px) {
 
@@ -1408,8 +1368,6 @@ html {
   }
 }
 
-
-
 @media (min-width: 768px) {
 
   .md\:h-\[60vh\] {
@@ -1420,8 +1378,6 @@ html {
     width: 450px;
   }
 }
-
-
 
 .\[\&\[data-state\=open\]\>svg\]\:rotate-180[data-state=open]>svg {
   --tw-rotate: 180deg;
