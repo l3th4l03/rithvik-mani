@@ -1,2 +1,0 @@
-# rithvik-mani
-Personal website
