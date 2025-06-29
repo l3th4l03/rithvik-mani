@@ -11,8 +11,32 @@ const InteractiveTerminal = ({ onClose, onNavigate, activeCard }: { onClose: () 
   const [history, setHistory] = useState<{ command: string; output: React.ReactNode }[]>([]);
   const terminalInputRef = useRef<HTMLDivElement>(null);
   const terminalBodyRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+    };
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile && terminalRef.current) {
+      setPosition({
+        x: (window.innerWidth - terminalRef.current.offsetWidth) / 2,
+        y: (window.innerHeight - terminalRef.current.offsetHeight) / 2,
+      });
+    } else if (!isMobile) {
+      setPosition({ x: 100, y: 100 });
+    }
+  }, [isMobile]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    if (isMobile) return;
+
     if (terminalRef.current && terminalRef.current.contains(e.target as Node)) {
       // Prevent drag from starting on input/buttons inside the terminal
       if ((e.target as HTMLElement).closest('.no-drag')) {
@@ -27,7 +51,7 @@ const InteractiveTerminal = ({ onClose, onNavigate, activeCard }: { onClose: () 
   };
 
   const handleMouseMove = (e: MouseEvent) => {
-    if (isDragging) {
+    if (isDragging && !isMobile) {
       setPosition({
         x: e.clientX - dragStartPos.current.x,
         y: e.clientY - dragStartPos.current.y,
@@ -50,7 +74,7 @@ const InteractiveTerminal = ({ onClose, onNavigate, activeCard }: { onClose: () 
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
     };
-  }, [isDragging]);
+  }, [isDragging, isMobile]);
   
   useEffect(() => {
     terminalInputRef.current?.focus();
@@ -154,8 +178,12 @@ const InteractiveTerminal = ({ onClose, onNavigate, activeCard }: { onClose: () 
   return (
     <div
       ref={terminalRef}
-      className="absolute w-full max-w-lg h-96 bg-[#0000CD] rounded-lg shadow-2xl overflow-hidden border border-gray-700 font-geist-mono flex flex-col"
-      style={{ top: position.y, left: position.x, cursor: isDragging ? 'grabbing' : 'grab' }}
+      className="absolute w-[95vw] max-w-lg h-96 bg-[#0000CD] rounded-lg shadow-2xl overflow-hidden border border-gray-700 font-geist-mono flex flex-col"
+      style={{ 
+        top: position.y, 
+        left: position.x, 
+        cursor: isDragging ? 'grabbing' : isMobile ? 'default' : 'grab'
+      }}
       onMouseDown={handleMouseDown}
     >
       <div className="bg-gray-800 h-8 flex-shrink-0 flex items-center justify-between px-3">

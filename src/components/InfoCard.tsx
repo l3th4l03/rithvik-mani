@@ -89,8 +89,23 @@ const projectsData = [
 export const InfoCard: React.FC<InfoCardProps> = ({ poi, onClose, cardPosition }) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const [adjustedPosition, setAdjustedPosition] = useState(cardPosition);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    useEffect(() => {
+        if (isMobile) {
+            setAdjustedPosition({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+            return;
+        }
+
         if (cardRef.current) {
             const cardRect = cardRef.current.getBoundingClientRect();
             let newX = cardPosition.x;
@@ -104,7 +119,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({ poi, onClose, cardPosition }
             
             setAdjustedPosition({ x: newX, y: newY });
         }
-    }, [cardPosition]);
+    }, [cardPosition, isMobile]);
     
   if (!poi) return null;
 
@@ -116,9 +131,10 @@ export const InfoCard: React.FC<InfoCardProps> = ({ poi, onClose, cardPosition }
         left: `${adjustedPosition.x}px`,
         top: `${adjustedPosition.y}px`,
         transform: "translate(-50%, -50%)",
+        zIndex: 50,
       }}
     >
-      <Card className={`w-[450px] ${poi.id === 'experience' || poi.id === 'projects' ? 'h-[60vh]' : 'h-auto'} bg-white/80 backdrop-blur-sm border-gray-200 shadow-xl flex flex-col`}>
+      <Card className={`w-[90vw] md:w-[450px] ${poi.id === 'experience' || poi.id === 'projects' ? 'h-[80vh] md:h-[60vh]' : 'h-auto'} bg-white/80 backdrop-blur-sm border-gray-200 shadow-xl flex flex-col`}>
         <CardHeader className="flex flex-row items-center justify-between flex-shrink-0">
           <CardTitle className="text-lg font-bold text-gray-800">{poi.title}</CardTitle>
           <button onClick={onClose} className="text-gray-500 hover:text-gray-800 transition-colors">

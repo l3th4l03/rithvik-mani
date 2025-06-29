@@ -159,11 +159,16 @@ const ProteinViewer: React.FC<ProteinViewerProps> = ({ onSectionSelect, activeSe
           z: max.z - min.z,
         };
         
+        const isMobile = window.innerWidth < 768;
+        const xOffset = isMobile ? 0.45 : 0.6;
+        const yOffset = isMobile ? 0.45 : 0.6;
+        const yTopOffset = isMobile ? 0.25 : 0.3;
+
         const updatedPois = [
-          { ...pointsOfInterest[0], position: { x: center.x - size.x * 0.6, y: center.y + size.y * 0.3, z: center.z } },
-          { ...pointsOfInterest[1], position: { x: center.x + size.x * 0.6, y: center.y, z: center.z } },
-          { ...pointsOfInterest[2], position: { x: center.x, y: center.y - size.y * 0.6, z: center.z } },
-          { ...pointsOfInterest[3], position: { x: center.x, y: center.y + size.y * 0.6, z: center.z } },
+          { ...pointsOfInterest[0], position: { x: center.x - size.x * xOffset, y: center.y + size.y * yTopOffset, z: center.z } },
+          { ...pointsOfInterest[1], position: { x: center.x + size.x * xOffset, y: center.y, z: center.z } },
+          { ...pointsOfInterest[2], position: { x: center.x, y: center.y - size.y * yOffset, z: center.z } },
+          { ...pointsOfInterest[3], position: { x: center.x, y: center.y + size.y * yOffset, z: center.z } },
         ];
         setPois(updatedPois);
         // --- End of repositioning logic ---
@@ -200,7 +205,7 @@ const ProteinViewer: React.FC<ProteinViewerProps> = ({ onSectionSelect, activeSe
 
         // Set initial view, zoom to ~60%, and lock zoom
         viewer.zoomTo();
-        viewer.zoom(1.0); // Using 0.7 to make it smaller.
+        viewer.zoom(isMobile ? 0.7 : 1.0);
         viewer.render();
 
         // Lock the zoom using the viewer's built-in controls.
