@@ -1,5 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import localFont from "next/font/local";
+
+const geistRegular = localFont({
+  src: [
+    {
+      path: "../../assets/fonts/geist/Geist-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-geist-regular",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Rithvik Mani Personal Website",
@@ -13,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className="font-geist-mono">{children}</body>
+      <body className={`${geistRegular.variable} font-sans`} style={{ fontFamily: 'var(--font-geist-regular)' }}>{children}</body>
     </html>
   );
 } 
