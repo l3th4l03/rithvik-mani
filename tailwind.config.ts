@@ -87,6 +87,13 @@ const config: Config = {
   			display: [
   				'JetBrains Mono"',
   				'monospace'
+  			],
+  			header: [
+  				'Segoe UI Historic',
+  				'Geist Mono',
+  				'Monaco', 
+  				'Consolas',
+  				'monospace'
   			]
   		},
   		animation: {

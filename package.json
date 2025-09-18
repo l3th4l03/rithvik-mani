@@ -6,10 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:api:quick": "bash -c 'echo \"Testing Quick Path API...\" && curl -X POST \"$NEXT_PUBLIC_API_BASE_URL/api/v1/external/design/quick\" -H \"Authorization: Bearer $NEXT_PUBLIC_API_KEY\" -H \"Content-Type: multipart/form-data\" -F \"target_file=@examples/target_proteins/egfr.pdb\" -F \"target_name=EGFR_test\" -F \"hotspot_residues=A:50-65,A:120-135\" -F \"binder_length_range=50-150\" -F \"num_designs=5\" | jq'",
+    "test:api:pipeline": "bash -c 'echo \"Testing Pipeline Path API...\" && echo \"1. Getting presigned upload URL...\" && UPLOAD_RESPONSE=$(curl -s -X POST \"$NEXT_PUBLIC_API_BASE_URL/api/v1/files/upload-url\" -H \"Authorization: Bearer $NEXT_PUBLIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"filename\":\"test.pdb\",\"content_type\":\"chemical/x-pdb\",\"file_category\":\"structure\",\"tags\":{},\"expires_hours\":24}') && echo $UPLOAD_RESPONSE | jq && echo \"2. Upload to S3 (manual step required)\" && echo \"3. Confirm upload (manual step required)\" && echo \"4. Create pipeline (manual step required)\"'",
+    "test:config": "node -r dotenv/config -e 'require(\"dotenv\").config({path:\".env.local\"}); console.log(\"API Base URL:\", process.env.NEXT_PUBLIC_API_BASE_URL || \"NOT SET\"); console.log(\"API Key:\", process.env.NEXT_PUBLIC_API_KEY ? \"SET (\" + process.env.NEXT_PUBLIC_API_KEY.length + \" chars)\" : \"NOT SET\");'",
+    "test:env": "npm run test:config"
   },
   "dependencies": {
-    "3dmol": "^2.5.1",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-popover": "^1.1.14",
     "@react-spring/web": "^10.0.1",
@@ -18,8 +21,10 @@
     "@react-three/postprocessing": "^3",
     "@types/styled-components": "^5.1.34",
     "@types/three": "^0.177.0",
+    "3dmol": "^2.5.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.2",
     "framer-motion": "^12.19.2",
     "leva": "^0.10.0",
     "lucide-react": "^0.525.0",
