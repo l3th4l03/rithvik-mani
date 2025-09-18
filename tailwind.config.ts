@@ -14,8 +14,7 @@ const config: Config = {
   			'dark-matter': '#1a1a2e',
   			'cosmic-blue': '#16213e',
   			'molecular-cyan': '#0f3460',
-  			'protein-blue': '#1e40af',
-  			'helix-cyan': '#06b6d4',
+    			'helix-cyan': '#06b6d4',
   			'helix-teal': '#14b8a6',
   			'bond-gold': '#f59e0b',
   			'ligand-purple': '#7c3aed',
@@ -252,16 +251,6 @@ const config: Config = {
           },
         },
         
-        '.protein-section': {
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
-          backdropFilter: 'blur(15px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          transition: 'all 0.4s ease',
-          '&:hover': {
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
-            transform: 'translateY(-5px)',
-          },
-        },
         
         // Interactive Molecular Elements
         '.domain-interactive': {

@@ -1715,16 +1715,6 @@
   resolved "https://registry.npmjs.org/@webgpu/types/-/types-0.1.63.tgz"
   integrity sha512-s9Kuh0nE/2+nKrvmKNMB2fE5Zlr3DL2t3OFKM55v5jRcfCOxbkOHhQoshoFum5mmXIfEtRXtLCWmkeTJsVjE9w==
 
-"3dmol@^2.5.1":
-  version "2.5.1"
-  resolved "https://registry.npmjs.org/3dmol/-/3dmol-2.5.1.tgz"
-  integrity sha512-3oN3qyE6YIJebbvz+KHlUn2o5mZtS1Y8E0lVt+SDbP/zlnCHBYuWnFJ+MB3hbAIQi5PBq4dGNd5BHcE/3LX8IA==
-  dependencies:
-    iobuffer "^5.0.0"
-    netcdfjs "^3.0.0"
-    pako "^2.1.0"
-    upng-js "^2.1.0"
-
 abort-controller@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/abort-controller/-/abort-controller-3.0.0.tgz"

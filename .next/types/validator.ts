@@ -42,12 +42,6 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   handler satisfies AppPageConfig<"/">
 }
 
-// Validate ../../src/app/protein-binder-generator/page.tsx
-{
-  const handler = {} as typeof import("../../src/app/protein-binder-generator/page.js")
-  handler satisfies AppPageConfig<"/protein-binder-generator">
-}
-
 
 
 
