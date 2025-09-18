@@ -6,7 +6,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./
 type BrutalistAccordionItem = {
   title: string
   content: React.ReactNode
-  company?: string
+  company?: React.ReactNode
   value?: string
 }
 

@@ -102,6 +102,15 @@ export default function Home() {
         showCompanyBorder={false}
         items={[
           { 
+            title: "Cofounder & CEO", 
+            company: (
+              <span style={{ letterSpacing: '-0.05em' }}>
+                Arcel AI (<a href="https://arcel.ai" target="_blank" rel="noopener noreferrer" className="hover:underline">arcel.ai</a>)
+              </span>
+            ),
+            content: "Control your entire finance stack with AI Agents. Entirely built into Google Sheets and MS Excel." 
+          },
+          { 
             title: "AI & Robotics Research Intern", 
             company: "USDA & NIFA REU Program",
             content: "Researched 3D Reconstruction, SLAM, and Multi-View Stereo pipelines in computer vision to build autonomous bamboo harvesting vehicles powered by AI." 
